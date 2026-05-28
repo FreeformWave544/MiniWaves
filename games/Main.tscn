@@ -1,0 +1,333 @@
+[gd_scene format=3 uid="uid://dt5lh7mm1rk8e"]
+
+[ext_resource type="Script" uid="uid://0ckflli458xo" path="res://games/firewall.gd" id="1_453u2"]
+[ext_resource type="Script" uid="uid://26qx3jwmap4f" path="res://games/main.gd" id="1_d4lv7"]
+[ext_resource type="Script" uid="uid://bqmgvppvpwb0k" path="res://games/shop.gd" id="3_c4ggm"]
+
+[sub_resource type="Gradient" id="Gradient_n4hyq"]
+colors = PackedColorArray(0.36078432, 0, 0, 1, 0.4828716, 0.29208598, 0.22217631, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_453u2"]
+noise_type = 2
+frequency = 0.2
+fractal_type = 3
+fractal_weighted_strength = 1.0
+fractal_ping_pong_strength = 1.8
+cellular_distance_function = 2
+cellular_return_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_d4lv7"]
+width = 50
+height = 50
+noise = SubResource("FastNoiseLite_453u2")
+color_ramp = SubResource("Gradient_n4hyq")
+
+[sub_resource type="Gradient" id="Gradient_453u2"]
+colors = PackedColorArray(1, 0, 0, 0, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_d4lv7"]
+gradient = SubResource("Gradient_453u2")
+width = 280
+height = 20
+
+[sub_resource type="Gradient" id="Gradient_d4lv7"]
+offsets = PackedFloat32Array(0, 0.9480519, 1)
+colors = PackedColorArray(0, 0, 0.5647059, 1, 0.4392157, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_c4ggm"]
+gradient = SubResource("Gradient_d4lv7")
+width = 280
+height = 20
+fill = 2
+fill_from = Vector2(0.5, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_d4lv7"]
+font_size = 64
+font_color = Color(0, 0, 0.41568628, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(1, 0, 0, 1)
+shadow_offset = Vector2(3, 3)
+stacked_shadow_count = 2
+stacked_shadow_0/offset = Vector2(1, 1)
+stacked_shadow_0/color = Color(0, 1, 0, 1)
+stacked_shadow_0/outline_size = 5
+stacked_shadow_1/offset = Vector2(2, 2)
+stacked_shadow_1/color = Color(0, 0, 1, 1)
+stacked_shadow_1/outline_size = 5
+
+[sub_resource type="Gradient" id="Gradient_c4ggm"]
+offsets = PackedFloat32Array(0.4935065, 0.6298701)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mymc4"]
+gradient = SubResource("Gradient_c4ggm")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_mymc4"]
+offsets = PackedFloat32Array(0.4935065, 0.6298701)
+colors = PackedColorArray(0.101960786, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_f8qac"]
+gradient = SubResource("Gradient_mymc4")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_bx8ap"]
+offsets = PackedFloat32Array(0.4935065, 0.6298701)
+colors = PackedColorArray(0, 0, 0.14901961, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_laumy"]
+gradient = SubResource("Gradient_bx8ap")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_c4ggm"]
+font_size = 64
+font_color = Color(0, 0, 0.41568628, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(1, 0, 0, 1)
+shadow_offset = Vector2(3, 3)
+stacked_shadow_count = 2
+stacked_shadow_0/offset = Vector2(1, 1)
+stacked_shadow_0/color = Color(0, 1, 0, 1)
+stacked_shadow_0/outline_size = 5
+stacked_shadow_1/offset = Vector2(2, 2)
+stacked_shadow_1/color = Color(0, 0, 1, 1)
+stacked_shadow_1/outline_size = 5
+
+[node name="Main" type="Control" unique_id=776862369]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d4lv7")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=660930721]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Firewall" type="Window" parent="." unique_id=1798784336]
+oversampling_override = 1.0
+title = "Firewall"
+position = Vector2i(700, 300)
+size = Vector2i(300, 300)
+visible = false
+unresizable = true
+script = ExtResource("1_453u2")
+
+[node name="ColorRect" type="ColorRect" parent="Firewall" unique_id=1478156402]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 296.0
+offset_bottom = 296.0
+color = Color(0.08117553, 0.008029055, 0.0062365313, 1)
+
+[node name="Block" type="Button" parent="Firewall" unique_id=2101346925]
+offset_left = 125.0
+offset_top = 125.0
+offset_right = 175.0
+offset_bottom = 175.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Firewall/Block" unique_id=1379634559]
+position = Vector2(25, 25)
+texture = SubResource("NoiseTexture2D_d4lv7")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Firewall" unique_id=440286452]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -140.0
+offset_top = -25.0
+offset_right = 140.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+step = 0.01
+texture_under = SubResource("GradientTexture2D_d4lv7")
+texture_progress = SubResource("GradientTexture2D_c4ggm")
+
+[node name="ShopWindow" type="Window" parent="." unique_id=262305159]
+oversampling_override = 1.0
+title = "Firewall"
+initial_position = 1
+size = Vector2i(1000, 500)
+visible = false
+unresizable = true
+script = ExtResource("3_c4ggm")
+
+[node name="ColorRect" type="ColorRect" parent="ShopWindow" unique_id=1973717834]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.20152658, 0.20152658, 0.20152658, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ShopWindow/ColorRect" unique_id=1547500709]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_right = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="ShopWindow/ColorRect/VBoxContainer" unique_id=914292948]
+layout_mode = 2
+text = "SHOP"
+label_settings = SubResource("LabelSettings_d4lv7")
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="ShopWindow/ColorRect/VBoxContainer" unique_id=1587369898]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 30
+columns = 20
+
+[node name="PerClick" type="VBoxContainer" parent="ShopWindow/ColorRect/VBoxContainer/GridContainer" unique_id=1991071400]
+layout_mode = 2
+
+[node name="PerClick" type="Button" parent="ShopWindow/ColorRect/VBoxContainer/GridContainer/PerClick" unique_id=879096776]
+custom_minimum_size = Vector2(37, 37)
+layout_mode = 2
+text = "1.0"
+
+[node name="Label" type="Label" parent="ShopWindow/ColorRect/VBoxContainer/GridContainer/PerClick" unique_id=1686344694]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Score/Click"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Price" type="Label" parent="ShopWindow/ColorRect/VBoxContainer/GridContainer/PerClick" unique_id=1367418315]
+layout_mode = 2
+text = "(5 SCORE)"
+horizontal_alignment = 1
+
+[node name="Firewall" type="VBoxContainer" parent="ShopWindow/ColorRect/VBoxContainer/GridContainer" unique_id=676077616]
+layout_mode = 2
+
+[node name="Firewall" type="Button" parent="ShopWindow/ColorRect/VBoxContainer/GridContainer/Firewall" unique_id=1016658970]
+custom_minimum_size = Vector2(37, 37)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ShopWindow/ColorRect/VBoxContainer/GridContainer/Firewall" unique_id=720194786]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Firewall"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Price" type="Label" parent="ShopWindow/ColorRect/VBoxContainer/GridContainer/Firewall" unique_id=1404594096]
+layout_mode = 2
+text = "(10 SCORE)"
+horizontal_alignment = 1
+
+[node name="FirewallClick" type="VBoxContainer" parent="ShopWindow/ColorRect/VBoxContainer/GridContainer" unique_id=1368008882]
+visible = false
+layout_mode = 2
+
+[node name="FirewallClick" type="Button" parent="ShopWindow/ColorRect/VBoxContainer/GridContainer/FirewallClick" unique_id=940867544]
+custom_minimum_size = Vector2(37, 37)
+layout_mode = 2
+text = "1.0x"
+
+[node name="Label" type="Label" parent="ShopWindow/ColorRect/VBoxContainer/GridContainer/FirewallClick" unique_id=1034125338]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Firewall Score/Completion"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Price" type="Label" parent="ShopWindow/ColorRect/VBoxContainer/GridContainer/FirewallClick" unique_id=1925870114]
+layout_mode = 2
+text = "(10 SCORE)"
+
+[node name="FirewallSpeed" type="VBoxContainer" parent="ShopWindow/ColorRect/VBoxContainer/GridContainer" unique_id=1220940294]
+visible = false
+layout_mode = 2
+
+[node name="FirewallSpeed" type="Button" parent="ShopWindow/ColorRect/VBoxContainer/GridContainer/FirewallSpeed" unique_id=1596620631]
+custom_minimum_size = Vector2(37, 37)
+layout_mode = 2
+text = "1.0x"
+
+[node name="Label" type="Label" parent="ShopWindow/ColorRect/VBoxContainer/GridContainer/FirewallSpeed" unique_id=2101084621]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Firewall Speed"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Price" type="Label" parent="ShopWindow/ColorRect/VBoxContainer/GridContainer/FirewallSpeed" unique_id=583923008]
+layout_mode = 2
+text = "(5 SCORE)"
+
+[node name="Clicker" type="TextureButton" parent="." unique_id=359123432]
+layout_mode = 0
+offset_left = 544.0
+offset_top = 292.0
+offset_right = 608.0
+offset_bottom = 356.0
+texture_normal = SubResource("GradientTexture2D_mymc4")
+texture_pressed = SubResource("GradientTexture2D_f8qac")
+texture_hover = SubResource("GradientTexture2D_laumy")
+
+[node name="Score" type="Label" parent="." unique_id=299729477]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -25.5
+offset_top = -48.0
+offset_right = 25.5
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "SCORE:
+0"
+label_settings = SubResource("LabelSettings_c4ggm")
+horizontal_alignment = 1
+
+[node name="Shop" type="Button" parent="." unique_id=641374976]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -72.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 51.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0.49803922, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.32156864, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.11667543, 0.3773366, 0.37732583, 1)
+theme_override_font_sizes/font_size = 32
+text = "SHOP"
+flat = true
+
+[connection signal="visibility_changed" from="Firewall" to="Firewall" method="_on_visibility_changed"]
+[connection signal="close_requested" from="ShopWindow" to="ShopWindow" method="_on_close_requested"]
+[connection signal="visibility_changed" from="ShopWindow" to="ShopWindow" method="_on_visibility_changed"]
+[connection signal="pressed" from="ShopWindow/ColorRect/VBoxContainer/GridContainer/PerClick/PerClick" to="ShopWindow" method="_on_per_click_pressed"]
+[connection signal="pressed" from="ShopWindow/ColorRect/VBoxContainer/GridContainer/Firewall/Firewall" to="ShopWindow" method="_on_firewall_pressed"]
+[connection signal="pressed" from="ShopWindow/ColorRect/VBoxContainer/GridContainer/FirewallClick/FirewallClick" to="ShopWindow" method="_on_firewall_click_pressed"]
+[connection signal="pressed" from="ShopWindow/ColorRect/VBoxContainer/GridContainer/FirewallSpeed/FirewallSpeed" to="ShopWindow" method="_on_firewall_speed_pressed"]
+[connection signal="pressed" from="Clicker" to="." method="_on_clicker_pressed"]
+[connection signal="pressed" from="Shop" to="." method="_on_shop_pressed"]
