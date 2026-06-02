@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://0ckflli458xo" path="res://games/firewall.gd" id="1_453u2"]
 [ext_resource type="Script" uid="uid://26qx3jwmap4f" path="res://games/main.gd" id="1_d4lv7"]
 [ext_resource type="Script" uid="uid://bqmgvppvpwb0k" path="res://games/shop.gd" id="3_c4ggm"]
+[ext_resource type="Script" uid="uid://dbmkhbd0cyrtw" path="res://games/clicker.gd" id="4_mymc4"]
 
 [sub_resource type="Gradient" id="Gradient_n4hyq"]
 colors = PackedColorArray(0.36078432, 0, 0, 1, 0.4828716, 0.29208598, 0.22217631, 1)
@@ -164,6 +165,7 @@ oversampling_override = 1.0
 title = "Firewall"
 initial_position = 1
 size = Vector2i(1000, 500)
+visible = false
 min_size = Vector2i(300, 200)
 keep_title_visible = true
 script = ExtResource("3_c4ggm")
@@ -277,6 +279,47 @@ autowrap_mode = 3
 layout_mode = 2
 text = "(5 SCORE)"
 
+[node name="AutoBrick" type="VBoxContainer" parent="ShopWindow/ColorRect/VBoxContainer/GridContainer" unique_id=563887249]
+visible = false
+layout_mode = 2
+
+[node name="AutoBrick" type="Button" parent="ShopWindow/ColorRect/VBoxContainer/GridContainer/AutoBrick" unique_id=1903223449]
+custom_minimum_size = Vector2(37, 37)
+layout_mode = 2
+text = "false"
+
+[node name="Label" type="Label" parent="ShopWindow/ColorRect/VBoxContainer/GridContainer/AutoBrick" unique_id=731320742]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Auto Brick"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Price" type="Label" parent="ShopWindow/ColorRect/VBoxContainer/GridContainer/AutoBrick" unique_id=86254728]
+layout_mode = 2
+text = "(5000 SCORE)"
+
+[node name="AutoBrickDelay" type="VBoxContainer" parent="ShopWindow/ColorRect/VBoxContainer/GridContainer" unique_id=521438388]
+visible = false
+layout_mode = 2
+
+[node name="AutoBrickDelay" type="Button" parent="ShopWindow/ColorRect/VBoxContainer/GridContainer/AutoBrickDelay" unique_id=1364779633]
+custom_minimum_size = Vector2(37, 37)
+layout_mode = 2
+text = "1.5s"
+
+[node name="Label" type="Label" parent="ShopWindow/ColorRect/VBoxContainer/GridContainer/AutoBrickDelay" unique_id=1710716265]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Auto Brick Delay
+(Seconds)"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Price" type="Label" parent="ShopWindow/ColorRect/VBoxContainer/GridContainer/AutoBrickDelay" unique_id=1345087232]
+layout_mode = 2
+text = "(5000 SCORE)"
+
 [node name="Clicker" type="TextureButton" parent="." unique_id=359123432]
 layout_mode = 0
 offset_left = 544.0
@@ -286,6 +329,7 @@ offset_bottom = 356.0
 texture_normal = SubResource("GradientTexture2D_mymc4")
 texture_pressed = SubResource("GradientTexture2D_f8qac")
 texture_hover = SubResource("GradientTexture2D_laumy")
+script = ExtResource("4_mymc4")
 
 [node name="Score" type="Label" parent="." unique_id=299729477]
 layout_mode = 1
@@ -329,5 +373,7 @@ flat = true
 [connection signal="pressed" from="ShopWindow/ColorRect/VBoxContainer/GridContainer/Firewall/Firewall" to="ShopWindow" method="_on_firewall_pressed"]
 [connection signal="pressed" from="ShopWindow/ColorRect/VBoxContainer/GridContainer/FirewallClick/FirewallClick" to="ShopWindow" method="_on_firewall_click_pressed"]
 [connection signal="pressed" from="ShopWindow/ColorRect/VBoxContainer/GridContainer/FirewallSpeed/FirewallSpeed" to="ShopWindow" method="_on_firewall_speed_pressed"]
+[connection signal="pressed" from="ShopWindow/ColorRect/VBoxContainer/GridContainer/AutoBrick/AutoBrick" to="ShopWindow" method="_on_auto_brick_pressed"]
+[connection signal="pressed" from="ShopWindow/ColorRect/VBoxContainer/GridContainer/AutoBrickDelay/AutoBrickDelay" to="ShopWindow" method="_on_auto_brick_delay_pressed"]
 [connection signal="pressed" from="Clicker" to="." method="_on_clicker_pressed"]
 [connection signal="pressed" from="Shop" to="." method="_on_shop_pressed"]

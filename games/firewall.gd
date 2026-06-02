@@ -10,5 +10,11 @@ func _on_visibility_changed() -> void:
 	get_parent().update()
 	_on_visibility_changed()
 
-func _physics_process(_delta: float) -> void:
-	if visible: $TextureProgressBar.value -= 0.05
+var brickTimer := 0.0
+func _physics_process(delta: float) -> void:
+	if visible:
+		if "AutoBrick" in Upgrades.upgrades: brickTimer += delta
+		$TextureProgressBar.value -= 0.05
+		if brickTimer >= max(0.0, Upgrades.upgrades["AutoBrickDelay"]) and Upgrades.upgrades["AutoBrick"] == true:
+			brickTimer = 0.0
+			$Block.pressed.emit()
