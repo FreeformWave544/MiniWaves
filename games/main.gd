@@ -3,9 +3,8 @@ extends Control
 var score := 0.0
 @onready var oldTime = Time.get_ticks_msec()
 func _on_clicker_pressed() -> void:
-	if (Time.get_ticks_msec() - oldTime) < 80: return
-	oldTime = Time.get_ticks_msec()
-	update()
+	if (Time.get_ticks_msec() - oldTime) < (80 + randi_range(-4, 4)): return
+	oldTime = Time.get_ticks_msec() 
 	score += Upgrades.upgrades["Click"]
 	update()
 
