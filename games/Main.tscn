@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://0ckflli458xo" path="res://games/firewall.gd" id="1_453u2"]
 [ext_resource type="Script" uid="uid://26qx3jwmap4f" path="res://games/main.gd" id="1_d4lv7"]
 [ext_resource type="Script" uid="uid://bqmgvppvpwb0k" path="res://games/shop.gd" id="3_c4ggm"]
+[ext_resource type="Script" uid="uid://b65pg7m43oewu" path="res://games/block.gd" id="3_f8qac"]
 [ext_resource type="Script" uid="uid://dbmkhbd0cyrtw" path="res://games/clicker.gd" id="4_mymc4"]
 
 [sub_resource type="Gradient" id="Gradient_n4hyq"]
@@ -139,8 +140,20 @@ offset_left = 125.0
 offset_top = 125.0
 offset_right = 175.0
 offset_bottom = 175.0
+script = ExtResource("3_f8qac")
 
 [node name="Sprite2D" type="Sprite2D" parent="Firewall/Block" unique_id=1379634559]
+position = Vector2(25, 25)
+texture = SubResource("NoiseTexture2D_d4lv7")
+
+[node name="Block2" type="Button" parent="Firewall" unique_id=418925048]
+visible = false
+offset_left = 71.0
+offset_top = 125.0
+offset_right = 121.0
+offset_bottom = 175.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Firewall/Block2" unique_id=937691496]
 position = Vector2(25, 25)
 texture = SubResource("NoiseTexture2D_d4lv7")
 
@@ -259,6 +272,26 @@ autowrap_mode = 3
 layout_mode = 2
 text = "(10 SCORE)"
 
+[node name="Blocks" type="VBoxContainer" parent="ShopWindow/ColorRect/VBoxContainer/GridContainer" unique_id=1110185211]
+visible = false
+layout_mode = 2
+
+[node name="Blocks" type="Button" parent="ShopWindow/ColorRect/VBoxContainer/GridContainer/Blocks" unique_id=2124842117]
+custom_minimum_size = Vector2(37, 37)
+layout_mode = 2
+text = "1"
+
+[node name="Label" type="Label" parent="ShopWindow/ColorRect/VBoxContainer/GridContainer/Blocks" unique_id=1356069661]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "More Blocks"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Price" type="Label" parent="ShopWindow/ColorRect/VBoxContainer/GridContainer/Blocks" unique_id=1414808022]
+layout_mode = 2
+text = "(1000 SCORE)"
+
 [node name="FirewallSpeed" type="VBoxContainer" parent="ShopWindow/ColorRect/VBoxContainer/GridContainer" unique_id=1220940294]
 visible = false
 layout_mode = 2
@@ -367,11 +400,13 @@ text = "SHOP"
 flat = true
 
 [connection signal="visibility_changed" from="Firewall" to="Firewall" method="_on_visibility_changed"]
+[connection signal="pressed" from="Firewall/Block2" to="Firewall/Block" method="_pressed"]
 [connection signal="close_requested" from="ShopWindow" to="ShopWindow" method="_on_close_requested"]
 [connection signal="visibility_changed" from="ShopWindow" to="ShopWindow" method="_on_visibility_changed"]
 [connection signal="pressed" from="ShopWindow/ColorRect/VBoxContainer/GridContainer/PerClick/PerClick" to="ShopWindow" method="_on_per_click_pressed"]
 [connection signal="pressed" from="ShopWindow/ColorRect/VBoxContainer/GridContainer/Firewall/Firewall" to="ShopWindow" method="_on_firewall_pressed"]
 [connection signal="pressed" from="ShopWindow/ColorRect/VBoxContainer/GridContainer/FirewallClick/FirewallClick" to="ShopWindow" method="_on_firewall_click_pressed"]
+[connection signal="pressed" from="ShopWindow/ColorRect/VBoxContainer/GridContainer/Blocks/Blocks" to="ShopWindow" method="_on_more_blocks_pressed"]
 [connection signal="pressed" from="ShopWindow/ColorRect/VBoxContainer/GridContainer/FirewallSpeed/FirewallSpeed" to="ShopWindow" method="_on_firewall_speed_pressed"]
 [connection signal="pressed" from="ShopWindow/ColorRect/VBoxContainer/GridContainer/AutoBrick/AutoBrick" to="ShopWindow" method="_on_auto_brick_pressed"]
 [connection signal="pressed" from="ShopWindow/ColorRect/VBoxContainer/GridContainer/AutoBrickDelay/AutoBrickDelay" to="ShopWindow" method="_on_auto_brick_delay_pressed"]

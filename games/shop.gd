@@ -36,6 +36,7 @@ func update() -> void:
 	$ColorRect/VBoxContainer/GridContainer/FirewallClick/FirewallClick.text = "%.1fx" % Upgrades.upgrades["Firewall"]
 	$ColorRect/VBoxContainer/GridContainer/FirewallSpeed/FirewallSpeed.text = "%.1fx" % Upgrades.upgrades["FirewallSpeed"]
 	$ColorRect/VBoxContainer/GridContainer/AutoBrickDelay/AutoBrickDelay.text = "%.1fs" % Upgrades.upgrades["AutoBrickDelay"]
+	$ColorRect/VBoxContainer/GridContainer/Blocks/Blocks.text = "%s" % Upgrades.upgrades["Blocks"]
 
 func _on_visibility_changed() -> void: update()
 
@@ -49,6 +50,7 @@ func _on_firewall_pressed() -> void:
 	$ColorRect/VBoxContainer/GridContainer/FirewallSpeed.show()
 	$ColorRect/VBoxContainer/GridContainer/AutoBrick.show()
 	$ColorRect/VBoxContainer/GridContainer/Firewall.hide()
+	$ColorRect/VBoxContainer/GridContainer/Blocks.show()
 	$"../Firewall".show()
 	update()
 
@@ -68,3 +70,10 @@ func _on_auto_brick_delay_pressed() -> void:
 	Upgrades.upgrades["AutoBrickDelay"] -= 0.1
 	update()
 	if Upgrades.upgrades["AutoBrickDelay"] <= 0.2: $ColorRect/VBoxContainer/GridContainer/AutoBrickDelay.hide()
+
+func _on_more_blocks_pressed() -> void:
+	var price = int($ColorRect/VBoxContainer/GridContainer/Blocks/Price.text.lstrip("(").rstrip(" SCORE)"))
+	if get_parent().score < price: return
+	get_parent().score -= price
+	Upgrades.upgrades["Blocks"] += 1
+	update()
