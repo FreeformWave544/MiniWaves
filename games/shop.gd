@@ -15,7 +15,7 @@ func _on_firewall_click_pressed() -> void:
 	var price = int($ColorRect/VBoxContainer/GridContainer/FirewallClick/Price.text.lstrip("(").rstrip(" SCORE)"))
 	if get_parent().score < price: return
 	get_parent().score -= price
-	price = price * (1.05) ** Upgrades.upgrades["Firewall"]
+	price = price * (1.005) ** Upgrades.upgrades["Firewall"]
 	$ColorRect/VBoxContainer/GridContainer/FirewallClick/Price.text = "(%.2f SCORE)" % price
 	Upgrades.upgrades["Firewall"] += 0.1
 	update()
