@@ -162,7 +162,7 @@ texture_progress = SubResource("GradientTexture2D_c4ggm")
 
 [node name="ShopWindow" type="Window" parent="." unique_id=262305159]
 oversampling_override = 1.0
-title = "Firewall"
+title = "Shop"
 initial_position = 1
 size = Vector2i(1000, 500)
 visible = false
